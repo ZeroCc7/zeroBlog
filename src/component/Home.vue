@@ -1,6 +1,6 @@
 <template>
   <div id="Home">
-    <leafBar></leafBar>
+    This is Home
   </div>
 </template>
 
