@@ -1,6 +1,21 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <el-container>
+      <el-aside width="200px">
+        <router-link to="/home" clas="btn-ui">Home</router-link>
+        <router-link to="/weather" clas="btn-ui">今日天气</router-link>
+        <router-link to="/news" clas="btn-ui">今日新闻</router-link>
+      </el-aside>
+      <el-container>
+
+        <el-header>
+
+        </el-header>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -11,34 +26,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-}
 </style>
