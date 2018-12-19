@@ -1,7 +1,7 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-    <div id="newPost">
+    <div id="newPost" style="height: 100%">
       <el-carousel :interval="5000" arrow="always" id="leftPh">
-        <el-carousel-item v-for="item in imgList">
+        <el-carousel-item v-for="item in imgList" style="height: 100%">
           <img v-bind:src="item.url">
         </el-carousel-item>
       </el-carousel>
@@ -28,6 +28,7 @@
 <style scoped>
   #leftPh{
     width: 98%;
+    height: 100%;
     /*padding-left: 5%;*/
   }
 
@@ -48,7 +49,7 @@
   }
 
   img{
-    height: 100%;
+    height: 600px;
     width: 100%;
   }
 
