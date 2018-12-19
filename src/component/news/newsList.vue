@@ -11,11 +11,11 @@
             <a href="#">
               <new-post></new-post>
               <!--<img src="../../static/img/new-cont.jpg" />-->
-              <div class="news-title">
-                <h5>新闻资讯</h5>
-                <p>News information</p>
-                <i class="icon-news"></i>
-              </div>
+              <!--<div class="news-title">-->
+                <!--<h5>新闻资讯</h5>-->
+                <!--<p>News information</p>-->
+                <!--<i class="icon-news"></i>-->
+              <!--</div>-->
             </a>
           </li>
           <li class="two">
@@ -104,7 +104,7 @@
 
 <style>
   .el-main {
-    line-height: 21px;
+    line-height: normal;
     text-align:left;
   }
   * {

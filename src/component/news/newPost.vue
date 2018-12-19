@@ -1,7 +1,7 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-    <div id="newPost" style="height: 100%">
+    <div id="newPost">
       <el-carousel :interval="5000" arrow="always" id="leftPh">
-        <el-carousel-item v-for="item in imgList" style="height: 100%">
+        <el-carousel-item v-for="item in imgList">
           <img v-bind:src="item.url">
         </el-carousel-item>
       </el-carousel>
@@ -49,7 +49,7 @@
   }
 
   img{
-    height: 600px;
+    height: 100%;
     width: 100%;
   }
 
