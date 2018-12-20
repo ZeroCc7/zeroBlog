@@ -51,8 +51,20 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true,
-    overlay: true
+    hot: true,
+    inline: true,
+    stats: { colors: true },
+    contentBase:'./',
+    proxy:{
+       "/api":{
+         // target:"http://api.douban.com/v2",
+         target:"http://c.m.163.com/nc/article/headline/T1348647853363",
+         //http://c.m.163.com/nc/article/headline/T1348647853363
+         changeOrigin: true,
+         secure: false,
+         pathRewrite:{"^/api":""}
+       }
+    }
   },
   performance: {
     hints: false

@@ -24,7 +24,8 @@
     },
     mounted () {
       axios
-        .get('/api/movie/top250')
+        // .get('/api/movie/top250')
+        .get('/api/0-40.html')
         .then(response => (this.info = response))
         .catch(err=>{
           console.log(err)
