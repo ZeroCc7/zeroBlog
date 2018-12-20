@@ -1,11 +1,12 @@
 <template>
   <div id="Home">
-   Home
+    {{info}}
   </div>
 </template>
 
 <script>
   import leftBar from "./bar"
+  import axios from "axios"
   export default {
     name:"home",
     components:{
@@ -13,8 +14,21 @@
     },
     data () {
       return {
-        img: require('../static/img/ph.jpg')
+        info: null
       }
+    },
+    filters: {
+      currencydecimal (value) {
+        return value.toFixed(2)
+      }
+    },
+    mounted () {
+      axios
+        .get('/api/movie/top250')
+        .then(response => (this.info = response))
+        .catch(err=>{
+          console.log(err)
+        })
     }
 
   }

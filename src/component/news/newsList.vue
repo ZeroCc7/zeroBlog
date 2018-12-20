@@ -6,7 +6,14 @@
           <h4>新闻资讯</h4>
           <p>News</p>
         </div>
+        <ul v-for="news in allNewS">
+          news
+
+
+        </ul>
         <ul>
+
+
           <li class="one">
             <a href="#">
               <new-post></new-post>
@@ -87,6 +94,7 @@
 
 <script>
   import newPost from "./newPost"
+  import axios from "axios"
 
   export default {
     name:"newList",
@@ -95,14 +103,22 @@
     },
     data () {
       return {
-        img: require('../../static/img/ph.jpg')
+        allNewS: null,
       }
+    },
+    mounted () {
+      axios
+        .get('http://c.m.163.com/nc/article/headline/T1348647853363/0-40.html')
+        .then(response => (this.allNewS = response))
     }
 
   }
 </script>
 
 <style>
+  .el-main::-webkit-scrollbar {
+    display: none;
+  }
   .el-main {
     line-height: normal;
     text-align:left;
