@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "axios-https-proxy-fix": "^0.17.1",
     "element-ui": "^2.4.1",
     "npm": "^6.1.0",
     "to": "^0.2.9",

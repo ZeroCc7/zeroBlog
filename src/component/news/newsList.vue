@@ -6,87 +6,120 @@
           <h4>新闻资讯</h4>
           <p>News</p>
         </div>
-        <ul v-for="news in allNewS">
-          news
-
-
+        <ul v-for=" j in 4">
+          <!--{{allNewS.slice(j*3,j*3+2)}}-->
+          <!--<li v-for="(value, key) in allNewS" v-if="key > 0" :class="key % 2==0?'two':'three'">-->
+          <li  v-for=" n in 3" v-bind:class="{ 'two':(n%2)==0,'three':(n%2)==1,'isFirst':n==1}" >
+            <a  v-if="n==1" v-for="value in allNewS.slice(j*8,j*8+3)" :href="value.url">
+              <div class="left">
+                <h3>{{value.mtime.substr(8,2)}}</h3>
+                <span>{{value.mtime.substr(0,7)}}</span>
+              </div>
+              <div class="right">
+                <h5>{{value.title}}</h5>
+                <img src="../../static/img/new-jiantou.jpg"/>
+              </div>
+            </a>
+            <a v-if="n==2" v-for="value in allNewS.slice(j*8+3,j*8+3+2)" :href="value.url">
+              <div class="top">
+                <h5>{{value.title}}</h5>
+                <div class="p">
+                  <p>{{value.digest}}</p>
+                </div>
+                <img src="../../static/img/new-jiantou.jpg">
+              </div>
+              <div class="bottom">
+                <h3>{{value.mtime.substr(8,2)}}</h3>
+                <span>{{value.mtime.substr(0,7)}}</span>
+              </div>
+            </a>
+            <a v-if="n==3" v-for="value in allNewS.slice(j*8+5,j*8+5+3)" :href="value.url">
+              <div class="left">
+                <h3>{{value.mtime.substr(8,2)}}</h3>
+                <span>{{value.mtime.substr(0,7)}}</span>
+              </div>
+              <div class="right">
+                <h5>{{value.title}}</h5>
+                <img src="../../static/img/new-jiantou.jpg"/>
+              </div>
+            </a>
+          </li>
         </ul>
-        <ul>
-
-
-          <li class="one">
-            <a href="#">
-              <new-post></new-post>
-              <!--<img src="../../static/img/new-cont.jpg" />-->
-              <!--<div class="news-title">-->
-                <!--<h5>新闻资讯</h5>-->
-                <!--<p>News information</p>-->
-                <!--<i class="icon-news"></i>-->
+        <!--<ul>-->
+          <!--<li class="one">-->
+            <!--<a href="#">-->
+              <!--<new-post></new-post>-->
+              <!--&lt;!&ndash;<img src="../../static/img/new-cont.jpg" />&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="news-title">&ndash;&gt;-->
+              <!--&lt;!&ndash;<h5>新闻资讯</h5>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p>News information</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<i class="icon-news"></i>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="two">-->
+            <!--<a href="#">-->
+              <!--<div class="top">-->
+                <!--<h5>微信支付HTTPS服务器更换证书对使用微信支付用户的影响解疑</h5>-->
+                <!--<div class="p">-->
+                  <!--<p>-->
+                    <!--2018年3月8日，微信支付商户平台发布公告：微信支付HTTPS服务器计划于2018年5月29日更换服务器SSL证书，为避免下单、退款等功能无法使用，微信支付要求商户平台开发人员尽快验证商户服务器是否</p>-->
+                <!--</div>-->
+                <!--<img src="../../static/img/new-jiantou.jpg">-->
               <!--</div>-->
-            </a>
-          </li>
-          <li class="two">
-            <a href="#">
-              <div class="top">
-                <h5>微信支付HTTPS服务器更换证书对使用微信支付用户的影响解疑</h5>
-                <div class="p">
-                  <p>2018年3月8日，微信支付商户平台发布公告：微信支付HTTPS服务器计划于2018年5月29日更换服务器SSL证书，为避免下单、退款等功能无法使用，微信支付要求商户平台开发人员尽快验证商户服务器是否</p>
-                </div>
-                <img src="../../static/img/new-jiantou.jpg">
-              </div>
-              <div class="bottom">
-                <h3>23</h3>
-                <span>2018.03</span>
-
-              </div>
-            </a>
-            <a href="#">
-              <div class="top">
-                <h5>商创网络荣获国家高新技术企业认证</h5>
-                <div class="p">
-                  <p>近日，上海商创网络科技有限公司通过了由上海市科学技术委员会、上海市财政局和上海市国家税务局组织的国家高新技术企业认定，并荣获国家“高新技术企业”称号。据悉，此次国家级、市级高新技术企业认定是根据科技部..</p>
-                </div>
-                <img src="../../static/img/new-jiantou.jpg">
-              </div>
-              <div class="bottom">
-                <h3>21</h3>
-                <span>2018.03</span>
-              </div>
-            </a>
-          </li>
-          <li class="three">
-            <a href="#">
-              <div class="left">
-                <h3>27</h3>
-                <span>2017.05</span>
-              </div>
-              <div class="right">
-                <h5>相信你一定也知道，小程序又双叒叕升级了！</h5>
-                <img src="../../static/img/new-jiantou.jpg" />
-              </div>
-            </a>
-            <a href="#">
-              <div class="left">
-                <h3>31</h3>
-                <span>2017.01</span>
-              </div>
-              <div class="right">
-                <h5>微信小程序已陆续推出13项新能力，商家care吗？</h5>
-                <img src="../../static/img/new-jiantou.jpg" />
-              </div>
-            </a>
-            <a href="#">
-              <div class="left">
-                <h3>28</h3>
-                <span>2017.08</span>
-              </div>
-              <div class="right">
-                <h5>微信也着陆了，新零售时代真的要来了？</h5>
-                <img src="../../static/img/new-jiantou.jpg" />
-              </div>
-            </a>
-          </li>
-        </ul>
+              <!--<div class="bottom">-->
+                <!--<h3>23</h3>-->
+                <!--<span>2018.03</span>-->
+              <!--</div>-->
+            <!--</a>-->
+            <!--<a href="#">-->
+              <!--<div class="top">-->
+                <!--<h5>商创网络荣获国家高新技术企业认证</h5>-->
+                <!--<div class="p">-->
+                  <!--<p>-->
+                    <!--近日，上海商创网络科技有限公司通过了由上海市科学技术委员会、上海市财政局和上海市国家税务局组织的国家高新技术企业认定，并荣获国家“高新技术企业”称号。据悉，此次国家级、市级高新技术企业认定是根据科技部..</p>-->
+                <!--</div>-->
+                <!--<img src="../../static/img/new-jiantou.jpg">-->
+              <!--</div>-->
+              <!--<div class="bottom">-->
+                <!--<h3>21</h3>-->
+                <!--<span>2018.03</span>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="three">-->
+            <!--<a href="#">-->
+              <!--<div class="left">-->
+                <!--<h3>27</h3>-->
+                <!--<span>2017.05</span>-->
+              <!--</div>-->
+              <!--<div class="right">-->
+                <!--<h5>相信你一定也知道，小程序又双叒叕升级了！</h5>-->
+                <!--<img src="../../static/img/new-jiantou.jpg"/>-->
+              <!--</div>-->
+            <!--</a>-->
+            <!--<a href="#">-->
+              <!--<div class="left">-->
+                <!--<h3>31</h3>-->
+                <!--<span>2017.01</span>-->
+              <!--</div>-->
+              <!--<div class="right">-->
+                <!--<h5>微信小程序已陆续推出13项新能力，商家care吗？</h5>-->
+                <!--<img src="../../static/img/new-jiantou.jpg"/>-->
+              <!--</div>-->
+            <!--</a>-->
+            <!--<a href="#">-->
+              <!--<div class="left">-->
+                <!--<h3>28</h3>-->
+                <!--<span>2017.08</span>-->
+              <!--</div>-->
+              <!--<div class="right">-->
+                <!--<h5>微信也着陆了，新零售时代真的要来了？</h5>-->
+                <!--<img src="../../static/img/new-jiantou.jpg"/>-->
+              <!--</div>-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
       </div>
     </div>
   </div>
@@ -97,32 +130,29 @@
   import axios from "axios"
 
   export default {
-    name:"newList",
-    components:{
+    name: "newList",
+    components: {
       newPost
     },
-    data () {
+    data() {
       return {
-        allNewS: null,
+        allNewS: [],
       }
     },
-    mounted () {
+    mounted() {
       axios
-        .get('http://c.m.163.com/nc/article/headline/T1348647853363/0-40.html')
-        .then(response => (this.allNewS = response))
+        .get('/api/0-40.html')
+        .then(response => (this.allNewS = response.data.T1348647853363))
     }
 
   }
 </script>
 
 <style>
-  .el-main::-webkit-scrollbar {
-    display: none;
+  .isFirst{
+    margin-right: 10px;
   }
-  .el-main {
-    line-height: normal;
-    text-align:left;
-  }
+
   * {
     margin: 0;
     padding: 0;
