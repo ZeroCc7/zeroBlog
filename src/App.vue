@@ -1,21 +1,21 @@
 <template>
   <div id="app">
     <el-container style="height: 100%">
-      <el-header>
-        <topBar></topBar>
-      </el-header>
-      <el-container>
-        <el-main>
-          <router-view></router-view>
-        </el-main>
-        <el-aside heigth="100%" width="200px">
-          <!--<left-bar></left-bar>-->
-          <!--<router-link to="/home" clas="btn-ui">Home</router-link>-->
-          <!--<router-link to="/weather" clas="btn-ui">今日天气</router-link>-->
-          <!--<router-link to="/news" clas="btn-ui">今日新闻</router-link>-->
-        </el-aside>
+      <el-aside width="200px">
+        <persion></persion>
+      </el-aside>
+      <el-container style="height: 100%">
+        <el-header>
+          <topBar></topBar>
+        </el-header>
+        <el-container>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+          <el-aside heigth="100%" width="200px">
+          </el-aside>
+        </el-container>
       </el-container>
-
     </el-container>
   </div>
 </template>
@@ -23,8 +23,9 @@
 <script>
   import leftBar from "./component/bar"
   import topBar from "./component/topBar"
-  export default {
-    components:{leftBar,topBar}
+  import persion from "./component/person/infomation"
+  export default  {
+    components:{leftBar,topBar,persion}
   }
 </script>
 
@@ -42,19 +43,17 @@
     height:100%;
   }
 
-
   .el-header, .el-footer {
-    background-color: #545c64;
+    background-color: #545C64;
     color: #333;
     text-align: center;
     line-height: 60px;
   }
 
   .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
+    border: #424d4d;
+    border-width: 1px;
+    border-right-style:solid;
   }
 
   .el-main {

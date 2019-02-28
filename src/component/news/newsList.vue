@@ -3,7 +3,7 @@
     <div class="container">
       <div class="main">
         <div class="title">
-          <h4>新闻资讯</h4>
+          <h4>博客</h4>
           <p>{{errorInfo}}</p>
         </div>
         <ul v-for=" j in 4">
