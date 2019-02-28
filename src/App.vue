@@ -12,7 +12,7 @@
           <el-main>
             <router-view></router-view>
           </el-main>
-          <el-aside heigth="100%" width="200px">
+          <el-aside class="grayAside" heigth="100%" width="200px">
           </el-aside>
         </el-container>
       </el-container>
@@ -49,7 +49,10 @@
     text-align: center;
     line-height: 60px;
   }
-
+  .grayAside{
+    background-color: #a6b3b3;
+    border-right-style:solid;
+  }
   .el-aside {
     border: #424d4d;
     border-width: 1px;
@@ -57,9 +60,9 @@
   }
 
   .el-main {
-    background-color: #f3f3f3;
+    /*background-color: #f3f3f3;*/
     color: #333;
-    text-align: center;
+    /*text-align: center;*/
   }
 
   body > .el-container {

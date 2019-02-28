@@ -1,14 +1,15 @@
 <template>
   <div id="Home">
-    {{info}}
+    <blogTable></blogTable>
   </div>
 </template>
 
 <script>
+  import blogTable from "./table/bolg-list"
   export default {
     name:"home",
     components:{
-
+      blogTable
     },
     data () {
       return {
