@@ -6,8 +6,16 @@
       <div ></div>
     </div>
     <ul class="other-site">
-      <li><img data-v-007cfd86="" src="../../static/img/github.png"></li>
-      <li><img data-v-007cfd86="" src="../../static/img/weibo.png"></li>
+      <li>
+        <a href="https://github.com/ZeroCc7" target="_blank">
+            <img data-v-007cfd86="" src="../../static/img/github.png">
+        </a>
+      </li>
+      <li>
+        <a href="https://weibo.com/letterr/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank">
+          <img data-v-007cfd86="" src="../../static/img/weibo.png">
+        </a>
+      </li>
     </ul>
   </div>
 </template>

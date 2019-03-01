@@ -1,9 +1,9 @@
 <template>
   <div id="blogTable">
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="title" label="名称" width="1080">
+      <el-table-column prop="blogTitle" label="名称" width="1080">
       </el-table-column>
-      <el-table-column prop="date" label="日期" width="400" align="right">
+      <el-table-column prop="creatTime" label="日期" width="400" align="right">
       </el-table-column>
     </el-table>
 
@@ -13,11 +13,11 @@
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="currentPage4"
+            :current-page="currentPage"
             :page-sizes="[10, 20, 50, 100]"
-            :page-size="10"
+            :page-size="pagesize"
             layout="total, sizes, prev, pager, next, jumper"
-            :total="100">
+            :total="totalCount">
           </el-pagination>
         </el-col>
       </el-row>
@@ -26,69 +26,57 @@
 </template>
 
 <script>
+  import axios from "axios"
+
   export default {
     name: "blogTable",
     data() {
       return {
-        tableData: [{
-          title: '王小虎',
-          date: '2016-05-02',
-        }, {
-          date: '2016-05-04',
-          title: '王小虎',
-        }, {
-          date: '2016-05-01',
-          title: '王小虎',
-        }, {
-          date: '2016-05-03',
-          title: '王小虎',
-        }]
+        //请求的URL
+        url:'/api/blog/list',
+        tableData: [],
+        currentPage: 1,
+        //默认每页数据量
+        pagesize: 10,
+        //查询的页码
+        start: 1,
+        //默认数据总数
+        totalCount: 0,
       }
     },
     methods: {
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(function(row)  {
-            this.$refs.multipleTable.toggleRowSelection(row);
-          });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
+      //从服务器读取数据
+      loadData: function(criteria, pageNum, pageSize){
+        let this1 = this;
+        var params = new URLSearchParams();
+        params.append('pageNum', pageNum);
+        params.append('pageSize', pageSize);
+        axios.post(this.url,params)
+             .then(function (response) {
+               var listData = response.data;
+               if(listData.success){
+                 this1.tableData = listData.data;
+                 this1.totalCount = listData.total;
+               }
+             })
+             .catch(err =>(this.errorInfo = "暂无数据！"))
       },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
+      //每页显示数据量变更
+      handleSizeChange: function(val) {
+        console.log(val)
+        this.pagesize = val;
+        this.loadData(this.criteria, this.currentPage, this.pagesize);
       },
-      callbackFunction(result) {
-        alert(result + "aaa");
-      },
-      fetchData(){ //获取数据
-        this.$http.jsonp("http://localhost:8111//view/enterprise!getListByParam.action",{//跨域请求数据
-          params: {
-            // keywords:this.keyword//输入的关键词
-          },
-          jsonpCallback:'callbackFunction'//这里是callback
-        }).then(function(res) {//请求成功回调，请求来的数据赋给searchList数组
-          this.total = res.body.count;
-          this.currentPage = res.body.curr;
-          this.tableData = res.body.data;
-          console.info(res);
-        },function(res) {//失败显示状态码
-          alert("res.status:"+res.status)
-        })
-      },
-      handleSizeChange(val){
-        this.pageSize = val;
-        this.currentPage = 1;
-        this.fetchData(1, val);
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val){
+      //页码变更
+      handleCurrentChange: function(val) {
+        console.log(val)
         this.currentPage = val;
-        this.fetchData(val, this.pageSize);
-        console.log(`当前页: ${val}`);
-      }
-
-    }
+        this.loadData(this.criteria, this.currentPage, this.pagesize);
+      },
+    },
+    mounted() {
+      this.loadData(this.criteria, this.currentPage, this.pagesize);
+    },
   }
 
 </script>

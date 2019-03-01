@@ -13,7 +13,7 @@
     },
     data () {
       return {
-        info: "首页玩啥"
+        info: ""
       }
     },
     filters: {

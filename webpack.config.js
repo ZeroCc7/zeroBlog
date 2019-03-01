@@ -58,7 +58,7 @@ module.exports = {
     proxy:{
        "/api":{
          // target:"http://api.douban.com/v2",
-         target:"http://c.m.163.com/nc/article/headline/T1348647853363",
+         target:"http://localhost:8111",
          //http://c.m.163.com/nc/article/headline/T1348647853363
          changeOrigin: true,
          secure: false,
