@@ -1,5 +1,11 @@
 <template>
   <div id="blogTable">
+  <section>
+    <el-row :gutter="24">
+      <el-col :span="2" :offset="22">
+        <el-button type="primary" @click="toAdd">新增</el-button>
+      </el-col>
+    </el-row>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="blogTitle" label="名称" width="1080">
       </el-table-column>
@@ -22,6 +28,7 @@
         </el-col>
       </el-row>
     </div>
+  </section>
   </div>
 </template>
 
@@ -72,6 +79,9 @@
         console.log(val)
         this.currentPage = val;
         this.loadData(this.criteria, this.currentPage, this.pagesize);
+      },
+      toAdd: function(val) {
+        this.$router.push({path:'/addBlog'})
       },
     },
     mounted() {

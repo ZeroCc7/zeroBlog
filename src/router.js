@@ -3,6 +3,7 @@ import Router from 'vue-router'  /* 引用vue路由模块，并赋值给变量Ro
 import Home from './component/Home'  /* 英文Hello.vue模版，并赋值给变量Hello,这里是“@”相当于“../” */
 import weather from './component/weather'
 import news from './component/news'
+import blog from './component/form/blog'
 Vue.use(Router)   /* 使用路由 */
 export default new Router({
   routes: [     /* 进行路由配置，规定“/”引入到Hello组件 */
@@ -20,6 +21,11 @@ export default new Router({
       path: '/news',
       name: 'news',  /* 这里的name同上，暂时没发现有什么意思 */
       component: news   /* 注册Home组件 */
+    },
+    {
+      path: '/addBlog',
+      name: 'blog',  /* 这里的name同上，暂时没发现有什么意思 */
+      component: blog   /* 注册Home组件 */
     }
   ]
 })
